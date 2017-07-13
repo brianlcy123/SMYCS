@@ -16,6 +16,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,10 @@ public class ImageController {
     @RequestMapping( method=RequestMethod.GET)
     public String getSubView( Model model ) {
         System.out.println("getSubView");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        System.out.println("Current user "+name);
+        
         try{
             ModelAndView mv = new ModelAndView( "resources/templates/upload-body" );
         }catch(Throwable t){
@@ -54,6 +60,11 @@ public class ImageController {
         System.out.println(image);
         String[] tags = image.getTagString().split(",");
         List<Tag> tagList = new ArrayList<>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        System.out.println("Current user "+ name);
+        
+        
         for(String tagName : tags){
             Tag tag = tagRepository.findByTagName(tagName);
             if(tag == null){
@@ -62,7 +73,7 @@ public class ImageController {
                 System.out.println("Create new tag Id :"+nextTagId);
                 tag.setId(String.valueOf(nextTagId));
                 tag.setTagName(tagName);
-                tag.setCreatorId("1");
+                tag.setCreatorId(name);
                 tag = tagRepository.insert(tag);
                 
             }

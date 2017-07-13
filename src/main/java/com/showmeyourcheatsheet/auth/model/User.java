@@ -2,23 +2,23 @@ package com.showmeyourcheatsheet.auth.model;
 
 import javax.persistence.*;
 import java.util.Set;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "user")
+@Document(collection="User")
 public class User {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
     private String username;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
