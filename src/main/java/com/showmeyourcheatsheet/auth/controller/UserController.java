@@ -59,6 +59,18 @@ public class UserController {
         return "login";
     }
     
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String logout(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "login";
+    }
+    
+    
     @RequestMapping(value={"/", "/home"}, method = RequestMethod.GET)
     public String home(HttpServletRequest request,HttpServletResponse response,Model model) {
         System.out.println("home");

@@ -42,16 +42,13 @@ public class ImageController {
     @RequestMapping( method=RequestMethod.GET)
     public String getSubView( Model model ) {
         System.out.println("getSubView");
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-        System.out.println("Current user "+name);
-        
+             
         try{
             ModelAndView mv = new ModelAndView( "resources/templates/upload-body" );
         }catch(Throwable t){
             System.out.println(t.getMessage());
         }        
-        return "upload-body";
+        return "resources/templates/upload-body";
     }
     
     @RequestMapping(method = RequestMethod.POST)
@@ -61,9 +58,7 @@ public class ImageController {
         String[] tags = image.getTagString().split(",");
         List<Tag> tagList = new ArrayList<>();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-        System.out.println("Current user "+ name);
-        
+        String name = auth.getName(); //get logged in username  
         
         for(String tagName : tags){
             Tag tag = tagRepository.findByTagName(tagName);
@@ -73,14 +68,14 @@ public class ImageController {
                 System.out.println("Create new tag Id :"+nextTagId);
                 tag.setId(String.valueOf(nextTagId));
                 tag.setTagName(tagName);
-                tag.setCreatorId(name);
+                tag.setCreatorName(name);
                 tag = tagRepository.insert(tag);
                 
             }
             tagList.add(tag);
         }
         image.setTags(tagList);
-        image.setCreatorId("1");
+        image.setCreatorName(name);
         Date newDate = new Date();
         image.setCreateTimeStamp(newDate);
         image.setLastUpdatedTimeStamp(newDate);

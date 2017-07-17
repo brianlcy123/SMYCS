@@ -17,7 +17,7 @@ public class Tag {
     @Id
     public String id;
     public String tagName;
-    public String creatorId;
+    public String creatorName;
 
     public String getId() {
         return id;
@@ -35,12 +35,12 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public String getCreatorId() {
-        return creatorId;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
     
 }

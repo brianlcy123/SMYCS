@@ -23,6 +23,8 @@
     <script src="resources/js/jquery.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
     <script src="resources/js/template.js"></script>
+    <script src="resources/js/common.js"></script>
+    <script src="resources/js/blueimp-gallery.min.js"></script>
 </head>
 
 <body>
@@ -42,18 +44,32 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a id="upload" href="#">Upload</a>
                     </li>
                     <li>
+                        <a href="#">About</a>
+                    </li>
+<!--                    <li>
                         <a href="#">Services</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
-                    </li>
-                    <li>
-                        <a id="upload" href="#">Upload</a>
-                    </li>
+                    </li>-->                    
                 </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/logout">Log out</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>

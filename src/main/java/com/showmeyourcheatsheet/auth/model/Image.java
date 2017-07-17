@@ -21,7 +21,7 @@ public class Image {
     public Date createTimeStamp;
     public Date lastUpdatedTimeStamp;
     public List<Tag> tags;
-    public String creatorId;
+    public String creatorName;
     public String imgurId;
     public List<String> likes;
     public String tagString;
@@ -58,12 +58,12 @@ public class Image {
         this.tags = tags;
     }
 
-    public String getCreatorId() {
-        return creatorId;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public String getImgurId() {
@@ -93,7 +93,7 @@ public class Image {
 
     @Override
     public String toString() {
-        return "Image{" + "id=" + id + ", createTimeStamp=" + createTimeStamp + ", lastUpdatedTimeStamp=" + lastUpdatedTimeStamp + ", tags=" + tags + ", creatorId=" + creatorId + ", imgurId=" + imgurId + ", likes=" + likes + ", tagString=" + tagString +'}';
+        return "Image{" + "id=" + id + ", createTimeStamp=" + createTimeStamp + ", lastUpdatedTimeStamp=" + lastUpdatedTimeStamp + ", tags=" + tags + ", creatorId=" + creatorName + ", imgurId=" + imgurId + ", likes=" + likes + ", tagString=" + tagString +'}';
     }
     
 }
