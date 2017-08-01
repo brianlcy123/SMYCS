@@ -4,7 +4,9 @@ $(function(){
     $("#home").on('click',function(){
         $("#body").load("resources/templates/home-body.jsp");
     });
-    $("#upload").on('click',function(){
+    $("#upload").click(function(event){
+        event.preventDefault();
+        event.stopPropagation();
         $.ajax({
            type: 'GET',
            url: '/img',
@@ -15,8 +17,6 @@ $(function(){
                console.log(response);
            }
         });
-        
-        //$("#body").load("/resources/templates/imgur.jsp");
     });
 });
 

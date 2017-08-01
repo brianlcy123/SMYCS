@@ -35,3 +35,38 @@ var hideErrorMessages = function(){
     $("#image-upload-error-message").hide();
     $("#tag-error-message").hide();
 };
+
+var getCurrentUser = function(){
+    $.ajax({
+            url: '/user',
+            method: 'GET',
+            success: function(data,status) {
+             console.log("calling getCurrentUser from common.js");
+             console.log(status);
+             console.log(data);
+            },
+            error: function(request, status, error){
+                console.log(request);
+                console.log(status);
+                console.log(error);
+            }
+          });
+};
+
+
+var redirectToImageUploadPage = function(){
+        event.preventDefault();
+        event.stopPropagation();
+        $.ajax({
+           type: 'GET',
+           url: '/img',
+           success: function(response){
+               $("#body").html(response);
+           },
+           error: function(status, response){
+               console.log(response);
+           }
+        });
+        
+        //$("#body").load("/resources/templates/imgur.jsp");
+    };
