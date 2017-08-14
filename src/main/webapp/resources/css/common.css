@@ -6,10 +6,14 @@ body {
 
 .form-signin {
     max-width: 330px;
-    padding: 15px;
+    padding: 15px 15px 0px 15px;
     margin: 0 auto;
 }
-
+.login-button{
+    max-width: 330px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
     margin-bottom: 10px;
